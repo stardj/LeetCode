@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb5f267d-ba2c-4b26-86d6-9cbc717cb2b1" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/offer/MoreThanHalfNum_Solution.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/offer/RectCover.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/LeetCode/leetcode/EvaluateRPN.class" afterPath="$PROJECT_DIR$/out/production/LeetCode/leetcode/EvaluateRPN.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/LeetCode/leetcode/MinDepthBT.class" afterPath="$PROJECT_DIR$/out/production/LeetCode/leetcode/MinDepthBT.class" />
-    </list>
+    <list default="true" id="fb5f267d-ba2c-4b26-86d6-9cbc717cb2b1" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -439,12 +433,12 @@
       <workItem from="1532201556140" duration="836000" />
       <workItem from="1532351998082" duration="137000" />
       <workItem from="1532460931880" duration="533000" />
-      <workItem from="1532511509561" duration="1756000" />
+      <workItem from="1532511509561" duration="1790000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13040000" />
+    <option name="totallyTimeSpent" value="13074000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
