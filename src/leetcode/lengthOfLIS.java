@@ -110,8 +110,10 @@ public class lengthOfLIS {
 
         // Find the maximum length from the array that we just generated
         int longest = 0;
-        for (int i = 0; i < T.length; i++)
+        for (int i = 0; i < T.length; i++) {
+            System.out.println(T[i]);
             longest = Math.max(longest, T[i]);
+        }
 
         return longest;
     }
@@ -121,7 +123,7 @@ public class lengthOfLIS {
         int[] tmp1 = {1, 3, 6, 7, 9, 4, 10, 5, 6};
         lengthOfLIS lis = new lengthOfLIS();
 //        lis.lengthOfLIS4(tmp);
-        System.out.println(lis.lengthOfLIS4(tmp1));
+        System.out.println(lis.lengthOfLIS5(tmp1));
 //        for (int val : lis.lengthOfLIS2(tmp)) {
 //            System.out.println(val);
 //        }
