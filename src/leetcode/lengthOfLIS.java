@@ -9,6 +9,7 @@ Explanation: The longest increasing subsequence is [2,3,7,101], therefore the le
  */
 
 import java.util.Arrays;
+import java.util.TreeMap;
 
 public class lengthOfLIS {
 
@@ -33,7 +34,7 @@ public class lengthOfLIS {
         int len = 0;
 
         for (int x : nums) {
-            int i = Arrays.binarySearch(dp, 0, len, x);
+            int i = Arrays.binarySearch(dp, 0, len, x);// check whether the x in the dp
             if (i < 0) i = -(i + 1);
             dp[i] = x;
             if (i == len) len++;
@@ -63,12 +64,33 @@ public class lengthOfLIS {
         return max;
     }
 
+    public int lengthOfLIS4(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        TreeMap<Integer, Integer> treeMap = new TreeMap<Integer, Integer>();
+        int index = 0;
+        int flag = -1;
+        int result = 0;
+        for (int x : nums) {
+            treeMap.put(x, index++);
+        }
+        for (int y : treeMap.values()) {
+            if (flag < y) {
+                flag = y;
+                result++;
+            }
+
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         int[] tmp = {10, 9, 2, 5, 3, 7, 101, 18};
+        int[] tmp1 = {1, 3, 6, 7, 9, 4, 10, 5, 6};
         lengthOfLIS lis = new lengthOfLIS();
-//        System.out.println(lis.lengthOfLIS2(tmp));
-        for (int val : lis.lengthOfLIS2(tmp)) {
-            System.out.println(val);
-        }
+//        lis.lengthOfLIS4(tmp);
+        System.out.println(lis.lengthOfLIS4(tmp1));
+//        for (int val : lis.lengthOfLIS2(tmp)) {
+//            System.out.println(val);
+//        }
     }
 }
