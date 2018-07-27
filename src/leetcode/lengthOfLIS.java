@@ -41,8 +41,26 @@ public class lengthOfLIS {
         return dp;
     }
 
-    public int[] lengthOfLIS3(int[] nums) {
-
+    public int lengthOfLIS3(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        int max = 1;
+        int prev1, prev2, count;   // always keep prev1 <= prev2
+        for (int i = 0; i < nums.length; i++) {
+            prev1 = nums[i];
+            prev2 = prev1;
+            count = 1;
+            for (int j = i + 1; j < nums.length; j++) {
+                if (prev2 > nums[j] && nums[j] > prev1) {
+                    prev2 = nums[j];
+                } else if (prev2 < nums[j]) {
+                    count++;
+                    prev1 = prev2;
+                    prev2 = nums[j];
+                }
+            }
+            max = Math.max(max, count);
+        }
+        return max;
     }
 
     public static void main(String[] args) {
