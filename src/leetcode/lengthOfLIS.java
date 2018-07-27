@@ -41,6 +41,10 @@ public class lengthOfLIS {
         return dp;
     }
 
+    public int[] lengthOfLIS3(int[] nums) {
+
+    }
+
     public static void main(String[] args) {
         int[] tmp = {10, 9, 2, 5, 3, 7, 101, 18};
         lengthOfLIS lis = new lengthOfLIS();
