@@ -138,7 +138,7 @@ public class HouseRobberIII {
 //        return result;
 //    }
 
-    //不相邻不是指不在相邻的层，二是指不相邻的节点，所以不是层次遍历
+    //不相邻不是指不在相邻的层，而是指不相邻的节点，所以不是层次遍历，应该是深度遍历
     public int rob2(TreeNode root) {
         Stack<TreeNode> stack_child = new Stack<TreeNode>();
         Stack<TreeNode> stack_node = new Stack<TreeNode>();
