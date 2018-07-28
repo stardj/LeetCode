@@ -32,15 +32,13 @@ public class HouseRobberIII {
         V[0] = list.get(0);
         V[1] = Math.max(list.get(0), list.get(1));
 
-        for(int i = 2;i<list.size();i++) {
+        for (int i = 2; i < list.size(); i++) {
             V[i] = Math.max(V[i - 1], list.get(i) + V[i - 2]);
             if (V[i] > result) {
                 result = V[i];
             }
         }
-
         return result;
-
     }
 
     public static ArrayList<Integer> getBFSValues(TreeNode root) {
@@ -66,5 +64,77 @@ public class HouseRobberIII {
             }
         } while (!stack_node.isEmpty());
         return list;
+    }
+
+    public int rob1(TreeNode root) {
+        Stack<TreeNode> stack_child = new Stack<TreeNode>();
+        Stack<TreeNode> stack_node = new Stack<TreeNode>();
+        ArrayList<Integer> V = new ArrayList<Integer>();
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null && root.right == null) {
+            return root.val;
+        }
+        int valL = root.left == null ? root.left.val : 0;
+        int valR = root.right == null ? root.right.val : 0;
+        if (valL == 0) {
+            if (valR != 0 && root.right.left == null && root.right.right == null) {
+                return Math.max(root.val, valR);
+            }
+        }
+        if (valR == 0) {
+            if (valL != 0 && root.left.left == null && root.left.right == null) {
+                return Math.max(root.val, valL);
+            }
+        }
+        TreeNode tmpL = root.left;
+        TreeNode tmpR = root.right;
+        if (tmpL.left == null && tmpL.right == null && tmpR.left == null && tmpR.right == null) {
+            return Math.max(root.val, valL + valR);
+        }
+
+        V.add(root.val);
+        V.add(Math.max(root.val, tmpL.val + tmpR.val));
+
+        if (tmpL != null) {
+            if (tmpL.left != null) {
+                stack_node.push(tmpL.left);
+            }
+            if (tmpL.right != null) {
+                stack_node.push(tmpL.right);
+            }
+        }
+
+        if (tmpR != null) {
+            if (tmpR.right != null) {
+                stack_node.push(tmpR.right);
+            }
+            if (tmpR.left != null) {
+                stack_node.push(tmpR.left);
+            }
+        }
+        int result = 0;
+        for (int i = 2; !stack_node.isEmpty(); i++) {
+            int sum = 0;
+            while (!stack_node.isEmpty()) {
+                TreeNode tmpNode = stack_node.pop();
+                sum += tmpNode.val;
+                if (tmpNode.left != null) {
+                    stack_child.push(tmpNode.left);
+                }
+                if (tmpNode.right != null) {
+                    stack_child.push(tmpNode.right);
+                }
+            }
+            while (!stack_child.isEmpty()) {
+                stack_node.push(stack_child.pop());
+            }
+            V.add(Math.max(V.get(i - 1), V.get(i - 2) + sum));
+            if (V.get(i) > result) {
+                result = V.get(i);
+            }
+        }
+        return result;
     }
 }
