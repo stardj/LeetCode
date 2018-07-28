@@ -15,7 +15,7 @@ public class HouseRobber {
     public int rob(int[] nums) {
 
         int[] V = new int[nums.length];
-        int result = 0;
+//        int result = 0;
         if (nums.length < 1) {
             return 0;
         }
@@ -30,12 +30,12 @@ public class HouseRobber {
         V[1] = Math.max(nums[0], nums[1]);
         for (int i = 2; i < nums.length; i++) {
             V[i] = Math.max(V[i - 1], nums[i] + V[i - 2]);
-            if (V[i] > result) {
-                result = V[i];
-            }
+//            if (V[i] > result) {
+//                result = V[i];
+//            }
         }
 
-        return result;
+        return V[V.length-1];
     }
 
     public static void main(String[] args) {

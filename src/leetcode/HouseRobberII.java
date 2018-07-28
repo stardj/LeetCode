@@ -1,4 +1,5 @@
 package leetcode;
+
 /*
 Input: [2,3,2]
 Output: 3
@@ -28,25 +29,25 @@ public class HouseRobberII {
 
         V1[0] = nums[0];
         V1[1] = Math.max(nums[0], nums[1]);
-        int result1 = Math.max(V1[0], V1[1]);
+//        int result1 = Math.max(V1[0], V1[1]);
         for (int i = 2; i < nums.length - 1; i++) {
             V1[i] = Math.max(V1[i - 1], nums[i] + V1[i - 2]);
-            if (V1[i] > result1) {
-                result1 = V1[i];
-            }
+//            if (V1[i] > result1) {
+//                result1 = V1[i];
+//            }
         }
 
         V2[1] = nums[1];
         V2[2] = Math.max(nums[1], nums[2]);
-        int result2 = Math.max(V2[1], V2[2]);
+//        int result2 = Math.max(V2[1], V2[2]);
         for (int i = 3; i < nums.length; i++) {
             V2[i] = Math.max(V2[i - 1], nums[i] + V2[i - 2]);
-            if (V2[i] > result2) {
-                result2 = V2[i];
-            }
+//            if (V2[i] > result2) {
+//                result2 = V2[i];
+//            }
         }
 
-        return Math.max(result1, result2);
+        return Math.max(V1[V1.length -2], V2[V2.length - 1]);//注意，V1最后一个值为空，V2第一个值为空
     }
 
     public static void main(String[] args) {
