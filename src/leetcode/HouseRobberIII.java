@@ -66,54 +66,114 @@ public class HouseRobberIII {
         return list;
     }
 
-    public int rob1(TreeNode root) {
+//    public int rob1(TreeNode root) {
+//        Stack<TreeNode> stack_child = new Stack<TreeNode>();
+//        Stack<TreeNode> stack_node = new Stack<TreeNode>();
+//        ArrayList<Integer> V = new ArrayList<Integer>();
+//        if (root == null) {
+//            return 0;
+//        }
+//        if (root.left == null && root.right == null) {
+//            return root.val;
+//        }
+//        int valL = root.left == null ? root.left.val : 0;
+//        int valR = root.right == null ? root.right.val : 0;
+//        if (valL == 0) {
+//            if (valR != 0 && root.right.left == null && root.right.right == null) {
+//                return Math.max(root.val, valR);
+//            }
+//        }
+//        if (valR == 0) {
+//            if (valL != 0 && root.left.left == null && root.left.right == null) {
+//                return Math.max(root.val, valL);
+//            }
+//        }
+//        TreeNode tmpL = root.left;
+//        TreeNode tmpR = root.right;
+//        if (tmpL.left == null && tmpL.right == null && tmpR.left == null && tmpR.right == null) {
+//            return Math.max(root.val, valL + valR);
+//        }
+//
+//        V.add(root.val);
+//        V.add(Math.max(root.val, tmpL.val + tmpR.val));
+//
+//        if (tmpL != null) {
+//            if (tmpL.left != null) {
+//                stack_node.push(tmpL.left);
+//            }
+//            if (tmpL.right != null) {
+//                stack_node.push(tmpL.right);
+//            }
+//        }
+//
+//        if (tmpR != null) {
+//            if (tmpR.right != null) {
+//                stack_node.push(tmpR.right);
+//            }
+//            if (tmpR.left != null) {
+//                stack_node.push(tmpR.left);
+//            }
+//        }
+//        int result = 0;
+//        for (int i = 2; !stack_node.isEmpty(); i++) {
+//            int sum = 0;
+//            while (!stack_node.isEmpty()) {
+//                TreeNode tmpNode = stack_node.pop();
+//                sum += tmpNode.val;
+//                if (tmpNode.left != null) {
+//                    stack_child.push(tmpNode.left);
+//                }
+//                if (tmpNode.right != null) {
+//                    stack_child.push(tmpNode.right);
+//                }
+//            }
+//            while (!stack_child.isEmpty()) {
+//                stack_node.push(stack_child.pop());
+//            }
+//            V.add(Math.max(V.get(i - 1), V.get(i - 2) + sum));
+//            if (V.get(i) > result) {
+//                result = V.get(i);
+//            }
+//        }
+//        return result;
+//    }
+
+    //不相邻不是指不在相邻的层，二是指不相邻的节点，所以不是层次遍历
+    public int rob2(TreeNode root) {
         Stack<TreeNode> stack_child = new Stack<TreeNode>();
         Stack<TreeNode> stack_node = new Stack<TreeNode>();
         ArrayList<Integer> V = new ArrayList<Integer>();
         if (root == null) {
             return 0;
         }
-        if (root.left == null && root.right == null) {
+        if (root.left != null) {
+            stack_node.push(root.left);
+        }
+        if (root.right != null) {
+            stack_node.push(root.right);
+        }
+        if (stack_node.isEmpty()) {
             return root.val;
         }
-        int valL = root.left == null ? root.left.val : 0;
-        int valR = root.right == null ? root.right.val : 0;
-        if (valL == 0) {
-            if (valR != 0 && root.right.left == null && root.right.right == null) {
-                return Math.max(root.val, valR);
+        int tmpval = 0;
+        while (!stack_node.isEmpty()) {
+            TreeNode tmp = stack_node.pop();
+            tmpval += tmp.val;
+            if (tmp.right != null) {
+                stack_child.push(tmp.right);
+            }
+            if (tmp.left != null) {
+                stack_child.push(tmp.left);
             }
         }
-        if (valR == 0) {
-            if (valL != 0 && root.left.left == null && root.left.right == null) {
-                return Math.max(root.val, valL);
-            }
+        if (stack_child.isEmpty()) {
+            return Math.max(tmpval, root.val);
         }
-        TreeNode tmpL = root.left;
-        TreeNode tmpR = root.right;
-        if (tmpL.left == null && tmpL.right == null && tmpR.left == null && tmpR.right == null) {
-            return Math.max(root.val, valL + valR);
+        while (!stack_child.isEmpty()) {
+            stack_node.push(stack_child.pop());
         }
-
         V.add(root.val);
-        V.add(Math.max(root.val, tmpL.val + tmpR.val));
-
-        if (tmpL != null) {
-            if (tmpL.left != null) {
-                stack_node.push(tmpL.left);
-            }
-            if (tmpL.right != null) {
-                stack_node.push(tmpL.right);
-            }
-        }
-
-        if (tmpR != null) {
-            if (tmpR.right != null) {
-                stack_node.push(tmpR.right);
-            }
-            if (tmpR.left != null) {
-                stack_node.push(tmpR.left);
-            }
-        }
+        V.add(Math.max(tmpval, root.val));
         int result = 0;
         for (int i = 2; !stack_node.isEmpty(); i++) {
             int sum = 0;
@@ -127,14 +187,16 @@ public class HouseRobberIII {
                     stack_child.push(tmpNode.right);
                 }
             }
-            while (!stack_child.isEmpty()) {
-                stack_node.push(stack_child.pop());
-            }
             V.add(Math.max(V.get(i - 1), V.get(i - 2) + sum));
             if (V.get(i) > result) {
                 result = V.get(i);
             }
+            while (!stack_child.isEmpty()) {
+                stack_node.push(stack_child.pop());
+            }
+
         }
+
         return result;
     }
 }
