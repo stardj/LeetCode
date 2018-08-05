@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb5f267d-ba2c-4b26-86d6-9cbc717cb2b1" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/SATest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/WaterMelon.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/LeetCode/leetcode/HouseRobberII.class" afterPath="$PROJECT_DIR$/out/production/LeetCode/leetcode/HouseRobberII.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/LeetCode/leetcode/HouseRobberIII.class" afterPath="$PROJECT_DIR$/out/production/LeetCode/leetcode/HouseRobberIII.class" />
-      <change beforePath="$PROJECT_DIR$/src/Solution.java" afterPath="$PROJECT_DIR$/src/Solution.java" />
-    </list>
+    <list default="true" id="fb5f267d-ba2c-4b26-86d6-9cbc717cb2b1" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -486,12 +479,12 @@
       <workItem from="1532511509561" duration="1790000" />
       <workItem from="1532641964042" duration="25784000" />
       <workItem from="1533049668239" duration="29000" />
-      <workItem from="1533290505466" duration="4930000" />
+      <workItem from="1533290505466" duration="5168000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43817000" />
+    <option name="totallyTimeSpent" value="44055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
